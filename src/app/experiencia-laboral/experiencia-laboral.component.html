@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h2 class="text-center">Registrar Experiencia</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="experienciaForm" (ngSubmit)="onSubmit()">
+        <!-- Empresa -->
+        <div class="mb-3">
+          <label for="empresa" class="form-label">Empresa</label>
+          <input 
+            id="empresa" 
+            formControlName="empresa" 
+            type="text" 
+            class="form-control" 
+            placeholder="Nombre de la empresa" />
+          <div 
+            *ngIf="experienciaForm.get('empresa')?.invalid && experienciaForm.get('empresa')?.touched" 
+            class="text-danger mt-1">
+            Empresa es requerida.
+          </div>
+        </div>
+
+        <!-- Puesto -->
+        <div class="mb-3">
+          <label for="puesto" class="form-label">Puesto</label>
+          <input 
+            id="puesto" 
+            formControlName="puesto" 
+            type="text" 
+            class="form-control" 
+            placeholder="Puesto desempeñado" />
+          <div 
+            *ngIf="experienciaForm.get('puesto')?.invalid && experienciaForm.get('puesto')?.touched" 
+            class="text-danger mt-1">
+            Puesto es requerido.
+          </div>
+        </div>
+
+        <!-- Fecha de Inicio -->
+        <div class="mb-3">
+          <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
+          <input 
+            id="fecha_inicio" 
+            formControlName="fecha_inicio" 
+            type="date" 
+            class="form-control" />
+        </div>
+
+        <!-- Fecha de Fin -->
+        <div class="mb-3">
+          <label for="fecha_fin" class="form-label">Fecha de fin</label>
+          <input 
+            id="fecha_fin" 
+            formControlName="fecha_fin" 
+            type="date" 
+            class="form-control" />
+        </div>
+
+        <!-- Descripción -->
+        <div class="mb-3">
+          <label for="descripcion" class="form-label">Descripción</label>
+          <textarea 
+            id="descripcion" 
+            formControlName="descripcion" 
+            class="form-control" 
+            rows="4" 
+            placeholder="Breve descripción de tus responsabilidades"></textarea>
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid gap-2">
+          <button 
+            type="submit" 
+            [disabled]="experienciaForm.invalid" 
+            class="btn btn-primary">
+            Registrar Experiencia
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

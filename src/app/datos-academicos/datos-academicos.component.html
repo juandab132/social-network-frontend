@@ -1,0 +1,83 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-dark text-white">
+      <h2 class="text-center">Registrar Datos Academicos</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="academicoForm" (ngSubmit)="onSubmit()">
+        <!-- Empresa -->
+        <div class="mb-3">
+          <label for="institucion" class="form-label">Institucion</label>
+          <input
+            id="institucion"
+            formControlName="institucion"
+            type="text"
+            class="form-control"
+            placeholder="Nombre de la institucion" />
+          <div
+            *ngIf="academicoForm.get('institucion')?.invalid && academicoForm.get('institucion')?.touched"
+            class="text-danger mt-1">
+            institucion es requerida.
+          </div>
+        </div>
+
+        <!-- carrera -->
+        <div class="mb-3">
+          <label for="carrera" class="form-label">Carrera</label>
+          <input
+            id="carrera"
+            formControlName="carrera"
+            type="text"
+            class="form-control"
+            placeholder="carrera Realizada" />
+          <div
+            *ngIf="academicoForm.get('carrera')?.invalid && academicoForm.get('carrera')?.touched"
+            class="text-danger mt-1">
+            carrera es requerido.
+          </div>
+        </div>
+
+        <!-- Fecha de Inicio -->
+        <div class="mb-3">
+          <label for="fecha_inicio" class="form-label">Fecha de inicio</label>
+          <input
+            id="fecha_inicio"
+            formControlName="fecha_inicio"
+            type="date"
+            class="form-control" />
+        </div>
+
+        <!-- Fecha de Fin -->
+        <div class="mb-3">
+          <label for="fecha_fin" class="form-label">Fecha de fin</label>
+          <input
+            id="fecha_fin"
+            formControlName="fecha_fin"
+            type="date"
+            class="form-control" />
+        </div>
+
+        <!-- titulo -->
+        <div class="mb-3">
+          <label for="titulo" class="form-label">Titulo</label>
+          <textarea
+            id="titulo"
+            formControlName="titulo"
+            class="form-control"
+            rows="4"
+            placeholder="titulo"></textarea>
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            [disabled]="academicoForm.invalid"
+            class="btn btn-primary">
+            Registrar Datos Academicos
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

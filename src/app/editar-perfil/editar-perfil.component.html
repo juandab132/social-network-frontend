@@ -1,0 +1,67 @@
+<div class="container mt-5">
+  <div class="card shadow">
+    <div class="card-header bg-primary text-white">
+      <h2 class="text-center">Editar Perfil</h2>
+    </div>
+    <div class="card-body">
+      <form [formGroup]="perfilForm" (ngSubmit)="onSubmit()">
+        <!-- Nombre -->
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre:</label>
+          <input
+            id="nombre"
+            formControlName="nombre"
+            type="text"
+            class="form-control"
+            placeholder="Ingresa tu nombre" />
+          <div
+            *ngIf="perfilForm.get('nombre')?.invalid && perfilForm.get('nombre')?.touched"
+            class="text-danger mt-1">
+            El nombre es obligatorio.
+          </div>
+        </div>
+
+        <!-- Apellido -->
+        <div class="mb-3">
+          <label for="apellido" class="form-label">Apellido:</label>
+          <input
+            id="apellido"
+            formControlName="apellido"
+            type="text"
+            class="form-control"
+            placeholder="Ingresa tu apellido" />
+          <div
+            *ngIf="perfilForm.get('apellido')?.invalid && perfilForm.get('apellido')?.touched"
+            class="text-danger mt-1">
+            El apellido es obligatorio.
+          </div>
+        </div>
+
+        <!-- Fecha de Nacimiento -->
+        <div class="mb-3">
+          <label for="fecha_nacimiento" class="form-label">Fecha de Nacimiento:</label>
+          <input
+            id="fecha_nacimiento"
+            formControlName="fecha_nacimiento"
+            type="date"
+            class="form-control" />
+          <div
+            *ngIf="perfilForm.get('fecha_nacimiento')?.invalid && perfilForm.get('fecha_nacimiento')?.touched"
+            class="text-danger mt-1">
+            La fecha de nacimiento es obligatoria.
+          </div>
+        </div>
+
+        <!-- Botón -->
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            [disabled]="perfilForm.invalid"
+            class="btn btn-success">
+            Guardar Cambios
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

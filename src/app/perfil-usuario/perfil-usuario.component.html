@@ -1,0 +1,94 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <div *ngIf="usuarios; else cargando">
+            <div class="text-center mb-4">
+              <div class="mt-4 text-right">
+                <button class="btn btn-primary" (click)="editarPerfil()">Editar Perfil</button>
+              </div>
+              <div class="rounded-circle bg-primary text-white d-inline-flex justify-content-center align-items-center"
+                style="inline-size: 100px; block-size: 100px;">
+                <h1>{{usuarios.username?.charAt(0).toUpperCase()}}</h1>
+              </div>
+            </div>
+            <h2 class="text-center mb-4">Perfil de {{ usuarios.username }}</h2>
+            <div class="row">
+              <div class="col-md-6">
+                <p class="mb-3">
+                  <strong class="text-muted">Nombre:</strong><br>
+                  {{ usuarios.nombre }} {{ usuarios.apellido }}
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p class="mb-3">
+                  <strong class="text-muted">Email:</strong><br>
+                  {{ usuarios.email }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <p class="mb-3">
+                  <strong class="text-muted">Fecha de Nacimiento:</strong><br>
+                  {{ usuarios.fecha_nacimiento | date }}
+                </p>
+              </div>
+            </div>
+            <!-- Experiencia laboral -->
+            <div class="mt-4">
+              <h3 class="text-center mb-4">Experiencia Laboral</h3>
+              <div *ngIf="experienciaLaboral.length > 0; else sinExperiencia">
+                <div *ngFor="let experiencia of experienciaLaboral" class="mb-3">
+                  <p><strong>{{ experiencia.puesto }}</strong> en {{ experiencia.empresa }}</p>
+                  <p><strong>Fechas:</strong> {{ experiencia.fecha_inicio | date }} -
+                    {{ experiencia.fecha_fin ? (experiencia.fecha_fin | date) : 'Actualmente' }}
+                    </p>
+                  <p><strong>Descripción:</strong> {{ experiencia.descripcion }}</p>
+                </div>
+              </div>
+              <ng-template #sinExperiencia>
+                <p class="text-muted text-center">No se han registrado experiencias laborales aún.</p>
+              </ng-template>
+            </div>
+            <!-- Botón para registrar nueva experiencia -->
+            <div class="mt-4 text-center">
+              <button class="btn btn-primary" (click)="registrarExperiencia()">Registrar Experiencia</button>
+            </div>
+            <div class="mt-4">
+              <h3 class="text-center mb-4">Datos Academicos</h3>
+              <div *ngIf="datosAcademicos.length > 0; else sinTitulos">
+                <div *ngFor="let academicos of datosAcademicos" class="mb-3">
+                  <p><strong>{{ academicos.puesto }}</strong> en {{ academicos.carrera }}</p>
+                  <p><strong>Fechas:</strong> {{ academicos.fecha_inicio | date }} -
+                    {{ academicos.fecha_fin ? (academicos.fecha_fin | date) : 'Actualmente' }}
+                    </p>
+                  <p><strong>Titulo:</strong> {{ academicos.titulo }}</p>
+                </div>
+              </div>
+              <ng-template #sinTitulos>
+                <p class="text-muted text-center">No se han registrado datos academicos aún.</p>
+              </ng-template>
+            </div>
+            <div class="mt-4 text-center">
+              <button class="btn btn-primary" (click)="registrarDatosAcademicos()">Registrar Datos Academicos</button>
+            </div>
+          </div>
+          <ng-template #cargando>
+            <div class="text-center p-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Cargando...</span>
+              </div>
+              <p class="mt-2">Cargando perfil...</p>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <!-- Mensaje de acceso denegado -->
+      <div *ngIf="usuarios === null" class="alert alert-danger mt-3">
+        <p class="mb-0">Acceso denegado. Inicie sesión para ver su perfil.</p>
+      </div>
+    </div>
+  </div>
+</div>

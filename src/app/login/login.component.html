@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white text-center">
+          <h2 class="mb-0">Iniciar sesión</h2>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+
+            <div class="mb-3">
+              <label for="username" class="form-label">Username:</label>
+              <input
+                id="username"
+                formControlName="username"
+                type="text"
+                class="form-control"
+                [ngClass]="{'is-invalid': loginForm.get('username')?.invalid && loginForm.get('username')?.touched}"
+                required />
+              <div class="invalid-feedback" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+                El username es obligatorio
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input
+                id="password"
+                formControlName="password"
+                type="password"
+                class="form-control"
+                [ngClass]="{'is-invalid': loginForm.get('password')?.invalid && loginForm.get('password')?.touched}"
+                required />
+              <div class="invalid-feedback" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+                La contraseña debe tener al menos 6 caracteres
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" [disabled]="loginForm.invalid">
+              Iniciar sesión
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

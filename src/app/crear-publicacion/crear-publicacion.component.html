@@ -1,0 +1,33 @@
+<form [formGroup]="feedForm" (ngSubmit)="crearPublicacion()" class="publicacion-form">
+  <div class="form-group">
+    <label for="contenido">Contenido:</label>
+    <textarea 
+      id="contenido"
+      formControlName="contenido"
+      class="form-control"
+      rows="4"
+      placeholder="¿Qué quieres compartir?"
+    ></textarea>
+    <div *ngIf="feedForm.get('contenido')?.invalid && feedForm.get('contenido')?.touched" class="error-message">
+      El contenido es requerido
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="imagen">Imagen:</label>
+    <input
+      type="file"
+      id="imagen"
+      accept="image/*"
+      (change)="onImageSelected($event)"
+      class="form-control"
+    >
+  </div>
+
+  <button 
+    type="submit" 
+    [disabled]="feedForm.invalid"
+    class="btn-publicar">
+    Publicar
+  </button>
+</form>

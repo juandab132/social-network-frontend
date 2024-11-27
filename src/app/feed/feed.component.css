@@ -1,0 +1,16 @@
+.publication-image {
+    max-inline-size: 200px; /* Fija el ancho máximo en píxeles */
+    block-size: auto;       /* Mantiene la proporción de la imagen */
+    border: 2px solid #dee2e6; /* Opcional: para un borde decorativo */
+    border-radius: 8px; /* Mantiene las esquinas redondeadas */
+    margin: 0 auto; /* Centra la imagen horizontalmente */
+  }
+  
+  .btn-group button {
+    margin-inline-end: 10px; /* Aumenta el espacio entre botones */
+  }
+  
+  .btn-group button:last-child {
+    margin-inline-end: 0; /* Evita margen extra en el último botón */
+  }
+  
